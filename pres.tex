@@ -1,12 +1,11 @@
-\documentclass{beamer}
+\documentclass[aspectratio=169]{beamer}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage[ruled, linesnumbered]{algorithm2e}
-
+\usepackage{nicefrac}
 
 \setbeamertemplate{bibliography item}[text]
 \usepackage{biblatex}
-%\usepackage[style=numeric, backend=bibtex]{biblatex}
 
 \usepackage{sansmathaccent}
 \pdfmapfile{+sansmathaccent.map}
@@ -24,29 +23,37 @@
 \date{\today}
 
 %% Add title, subtitle, authors
-\title[$\quad\quad$ Short title]{Title}
-\subtitle{}
-\author[Author-1 \& Author-2]{Author 1 and Author 2}
-
+\title[$\quad\quad\qquad$ Subject Code]{Title}
+\subtitle{Subject Code: Subject Name}
+\author[Presenter Name]{Presenter Name}
+\authorCustom{Presenter Name}{Student Code}
+\newcommand{\emailid}{youremail@domain.com}
 %% Advisor/research supervisor is optional. If you don't want just 
 %% comment the line.
-\advisor{Research advisor}{Name}
+\advisor{Role of Guide\#1}{Guide\#1 Name}{Designation of Guide\#1}
 
-%% You can add a figure at the bottom of the title page. It will be 
-%% nice if you can add a logo of the conference that you are presenting 
-%% in your slides. If you want logo, just uncomment this line.
-%% \bottomfigure{\hspace*{9cm}\includegraphics[scale=0.1]{figures/conf.png}}
+\advisorA{Role of Guide\#2}{Guide\#2 Name}{Designation of Guide\#2}
 
-
-%% Assigning institute name. If you want department, just add 
-%% before the Institute name.
 \institute[IIST]{Indian Institute of Space Science and Technology \\
 Thiruvananthapuram, Kerala, India 695547 \\}
+
+
+\AtBeginSection[]
+{
+    \begin{frame}
+        \fontsize{16pt}{10pt}\selectfont
+        \begin{center}
+            \secname
+        \end{center}
+    \end{frame}
+
+}
 
 \begin{document}
 
 %% Creating title slide
 \begin{frame}[plain]
+    \usebeamerfont{title}
 	\titlepage
 \end{frame}
 
@@ -181,19 +188,7 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 	user while it is running\footfullcite{stallman1981emacs}.
 \end{frame}
 
-%% Since the theme displays references as footnotes, it is not 
-%% recommended to make it redundant again in the last slide. Still, if 
-%% you want references as a separate slide, uncomment the following 
-%% frame.
-
-%\subsection{References}
-%\begin{frame}
-	%\frametitle{References}
-	%\nocite{*}
-	%\printbibliography
-%\end{frame}
-
-\customframe{Questions?}{abc@mail.com}
+\customframe{Questions?}{\emailid}
 \customframe{Thank you.}{}
 
 
