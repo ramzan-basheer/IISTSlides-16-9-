@@ -17,6 +17,9 @@
 % Contact email: 4sarathbabu@gmail.com
 % URL: https://github.com/4sarathbabu/IISTSlides
 
+% Updated by : Harsh Agarwal, contact at harshvinay752@gmail.com
+% URL: https://github.com/harshvinay752
+
 
 %%% The preamble 
 \mode<presentation>
@@ -28,6 +31,8 @@
 \usepackage[absolute, overlay]{textpos}
 \usepackage{mathtools}
 \usepackage{amsthm}
+% \usepackage{multicol}
+
 
 %% ---- Assumption, Remark, and Proposition
 \newtheorem{assumption}{Assumption}
@@ -36,10 +41,23 @@
 
 %%% Define custom commands for the slides
 %% Command for advisor in the title page
-\newcommand{\advisor}[2]
+\newcommand{\advisor}[3]
 {
 	\newcommand{\advisordesc}{#1}
 	\newcommand{\advisorname}{#2}
+	\newcommand{\advisorpost}{#3}
+}
+
+\newcommand{\advisorA}[3]
+{
+	\newcommand{\advisorAdesc}{#1}
+	\newcommand{\advisorAname}{#2}
+	\newcommand{\advisorApost}{#3}
+}
+
+\newcommand{\authorCustom}[2]{
+    \newcommand{\authorname}{#1}
+    \newcommand{\authorcode}{#2}
 }
 
 %% Command for a figure at the bottom (optional for conference logo)
@@ -52,7 +70,7 @@
 \definecolor{TitleBlack}{rgb}{0, 0, 0} % Usual black
 \definecolor{TopLine}{RGB}{0, 147, 221} % Light blue from logo
 \definecolor{BottomLine}{RGB}{213, 187, 146} % Light cream from logo
-\definecolor{BulletGreen}{RGB}{147, 176, 94} % Light green from logo
+\definecolor{BulletGreen}{RGB}{24, 100, 196} % Light green from logo
 \definecolor{CustomBlue}{RGB}{24, 100, 196} % Dark blue for some fonts
 
 %% Defining footnote font size
@@ -133,20 +151,21 @@
 		\begin{pgfpicture}{0mm}{0mm}{0mm}{0mm}
 			\pgfsetlinewidth{0.1mm}			
 			\color{BottomLine!60}      	
-			\pgfrect[fill]{\pgfpoint{4mm}{2mm}}{\pgfpoint{3mm}{3mm}}
+% 			\pgfrect[fill]{\pgfpoint{4mm}{2mm}}{\pgfpoint{3mm}{3mm}}
 			\ifx\insertframetitle\empty
 			\else
 				\color{BottomLine}  
-				\pgfline{\pgfpoint{7.5mm}{1.75mm}}{\pgfpoint{11.68cm}{1.75mm}}
+				\pgfline{\pgfpoint{2.5mm}{1.75mm}}{\pgfpoint{11.3cm}{1.75mm}}
 			\fi
 			\color{TopLine!50}
-			\pgfrect[fill]{\pgfpoint{1mm}{5mm}}{\pgfpoint{3mm}{3mm}}
+% 			\pgfrect[fill]{\pgfpoint{1mm}{5mm}}{\pgfpoint{3mm}{3mm}}
 			\ifx\insertframetitle\empty
 			\else
 				\color{TopLine}
-				\pgfline{\pgfpoint{7.5mm}{2.25mm}}{\pgfpoint{11.64cm}{2.25mm}}
+				\pgfline{\pgfpoint{2.5mm}{2.25mm}}{\pgfpoint{11.3cm}{2.25mm}}
 			\fi
-			\hspace{11.6cm}\vspace*{-4mm}\includegraphics[height=1cm, width=1cm]{logo.pdf}      	    	
+% 			\hspace{1.6cm}{\raisebox{5mm}\includegraphics[height=1cm, width=1cm]{logo.pdf}}
+            \makebox[0pt][l]{\hspace*{11.4cm}\raisebox{-2mm}{\includegraphics[height=1cm, width=1cm]{logo.pdf}}}
 		\end{pgfpicture}
 	}
 }
@@ -176,7 +195,7 @@
 } 
 
 %% Font size and positioning of the frame titles
-\setbeamerfont{frametitle}{size = \Large}
+\setbeamerfont{frametitle}{size = \large}
 \setbeamertemplate{frametitle}{
 \vspace*{1.5mm}\hspace*{-1mm}\insertframetitle}
 
@@ -229,7 +248,7 @@
 %%% --------------------Design of the Title Page--------------------%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \setbeamercolor{title}{bg=orange, fg=TitleBlack}
-\setbeamerfont{title}{size=\huge}
+\setbeamerfont{title}{size=\tiny}
 
 \setbeamertemplate{title page}
 {
@@ -241,9 +260,9 @@
 			\begin{pgfpicture}{0mm}{0mm}{\paperwidth}{10mm}
 				\pgfsetlinewidth{0.1mm}
 				\color{BottomLine}
-				\pgfline{\pgfpoint{3mm}{0mm}}{\pgfpoint{125mm}{0mm}}
+				\pgfline{\pgfpoint{3mm}{0mm}}{\pgfpoint{124mm}{0mm}}
 				\color{TopLine}
-				\pgfline{\pgfpoint{3mm}{0.5mm}}{\pgfpoint{125mm}{0.5mm}}		
+				\pgfline{\pgfpoint{3mm}{0.5mm}}{\pgfpoint{124mm}{0.5mm}}		
 			\end{pgfpicture} 
 		\end{beamercolorbox}
 	\end{textblock*}
@@ -255,34 +274,40 @@
                 {\begin{mdframed}[backgroundcolor=TopLine!10, linecolor=white,
                     shadow=true, shadowsize=4pt,
                     roundcorner=4pt]
-                    \begin{center}\Large\textbf{\inserttitle}\end{center}\end{mdframed}} % Title
+                    \begin{center}\normalsize\textbf{\inserttitle}\end{center}\end{mdframed}} % Title
 	\fi
 	
    	\ifx\insertsubtitle\empty		
 	\else
-		{\footnotesize \insertsubtitle} % Subtitle
+		{\vspace{2mm} \tiny \insertsubtitle} % Subtitle
 	\fi
 	
 	\ifx\author\empty		
 	\else
 		\vspace{0.5cm}
-		{\footnotesize \insertauthor} % Author
+		{\footnotesize \textbf{\authorname}, \authorcode} % Author
 	\fi	
 	
 	\ifdefined\advisorname
 		\vspace{0.2cm} % Advisor
-		{\footnotesize {\color{TopLine}\advisordesc: }\advisorname}
+		{\tiny \color{TopLine}\advisordesc}{\footnotesize {\vspace*{1mm}\\}\advisorname} \vspace*{1mm}\\{\tiny \advisorpost}
 	\else
 	\fi
 	
-	\vspace{0.5cm}
-	\includegraphics[width=1.5cm, height=1.5cm]{logo.pdf} % Logo
+	\ifdefined\advisorAname
+		\vspace{0.2cm} % Advisor
+		{\tiny \color{TopLine}\advisorAdesc}{\footnotesize {\vspace*{1mm}\\}\advisorAname} \vspace*{1mm}\\ {\tiny \advisorApost}
+	\else
+	\fi
 	
-	\vspace{0.5cm}
-	{\footnotesize \textsc{\insertinstitute}} % Institute name
+	\vspace{0.35cm}
+	\includegraphics[width=1.2cm, height=1.2cm]{logo.pdf} % Logo
 	
-	\vspace{0.5cm}
-	{\scriptsize \insertdate} % Date
+	\vspace{0.25cm}
+	{\tiny\textsc{\insertinstitute}} % Institute name
+	
+% 	\vspace{0.5cm}
+% 	{\scriptsize \insertdate} % Date
 
 	% Drawing two parallel lines at the bottom
 	\begin{textblock*}{\paperwidth}(0cm,0.92\paperheight)
@@ -290,9 +315,9 @@
 			\begin{pgfpicture}{0mm}{0mm}{\paperwidth}{1mm}				
 				\pgfsetlinewidth{0.1mm}
 				\color{BottomLine}
-				\pgfline{\pgfpoint{2.5mm}{0.5mm}}{\pgfpoint{125mm}{0.5mm}}		
+				\pgfline{\pgfpoint{3mm}{0.5mm}}{\pgfpoint{124mm}{0.5mm}}		
 				\color{TopLine}
-				\pgfline{\pgfpoint{2.5mm}{0mm}}{\pgfpoint{125mm}{0mm}}							
+				\pgfline{\pgfpoint{3mm}{0mm}}{\pgfpoint{124mm}{0mm}}							
 			\end{pgfpicture} 
 		\end{beamercolorbox}		
 	\end{textblock*}	
@@ -317,8 +342,8 @@ color(.5\textwidth)=(TopLine); color(\textwidth)=(white)}
 \begin{pgfpicture}{0mm}{0mm}{\paperwidth}{\paperheight}
 	\pgfputat{\pgfxy(5.5,5)}{\pgfbox[center,center]{\huge #1}}
 	\pgfputat{\pgfxy(5.5,4.6)}{\pgfuseshading{doubleShade}}
-	\pgfputat{\pgfxy(5.5,4.4)}{\pgfbox[center,center]{\color{TopLine!100}\scriptsize{#2}}}
-	\pgfputat{\pgfxy(11.175,9.065)}{\pgfbox[center,center]{\includegraphics[height=1cm, width=1cm]{logo.pdf}}}
+	\pgfputat{\pgfxy(5.5,4.4)}{\pgfbox[center,center]{\color{CustomBlue}\scriptsize{#2}}}
+	\pgfputat{\pgfxy(11,12.065)}{\pgfbox[center,center]{\includegraphics[height=1cm, width=1cm]{logo.pdf}}}
 	\pgfsetlinewidth{0.1mm}
 	\color{BottomLine}
 	\color{TopLine}
@@ -328,4 +353,4 @@ color(.5\textwidth)=(TopLine); color(\textwidth)=(white)}
 }
 
 \mode
-<all>  	  
+<all>  	 
