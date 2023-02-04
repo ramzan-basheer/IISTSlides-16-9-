@@ -150,7 +150,7 @@
 	{
 		\begin{pgfpicture}{0mm}{0mm}{0mm}{0mm}
 			\pgfsetlinewidth{0.1mm}			
-			\color{BottomLine!60}      	
+			\color{BottomLine!60}       	
 % 			\pgfrect[fill]{\pgfpoint{4mm}{2mm}}{\pgfpoint{3mm}{3mm}}
 			\ifx\insertframetitle\empty
 			\else
@@ -257,12 +257,12 @@
 	%% Drawing two parallel lines at the top
 	\begin{textblock*}{\paperwidth}(0cm,0.1cm)
 		\begin{beamercolorbox}[wd=\paperwidth,ht=2.25ex]{Title}
-			\begin{pgfpicture}{0mm}{0mm}{\paperwidth}{10mm}
+			\begin{pgfpicture}{0mm}{0mm}{\paperwidth}{13mm}
 				\pgfsetlinewidth{0.1mm}
 				\color{BottomLine}
-				\pgfline{\pgfpoint{3mm}{0mm}}{\pgfpoint{124mm}{0mm}}
+				\pgfline{\pgfpoint{3mm}{0mm}}{\pgfpoint{157mm}{0mm}}
 				\color{TopLine}
-				\pgfline{\pgfpoint{3mm}{0.5mm}}{\pgfpoint{124mm}{0.5mm}}		
+				\pgfline{\pgfpoint{3mm}{0.5mm}}{\pgfpoint{157mm}{0.5mm}}		
 			\end{pgfpicture} 
 		\end{beamercolorbox}
 	\end{textblock*}
@@ -315,9 +315,9 @@
 			\begin{pgfpicture}{0mm}{0mm}{\paperwidth}{1mm}				
 				\pgfsetlinewidth{0.1mm}
 				\color{BottomLine}
-				\pgfline{\pgfpoint{3mm}{0.5mm}}{\pgfpoint{124mm}{0.5mm}}		
+				\pgfline{\pgfpoint{3mm}{0.5mm}}{\pgfpoint{157mm}{0.5mm}}		
 				\color{TopLine}
-				\pgfline{\pgfpoint{3mm}{0mm}}{\pgfpoint{124mm}{0mm}}							
+				\pgfline{\pgfpoint{3mm}{0mm}}{\pgfpoint{157mm}{0mm}}							
 			\end{pgfpicture} 
 		\end{beamercolorbox}		
 	\end{textblock*}	
@@ -340,9 +340,9 @@ color(.5\textwidth)=(TopLine); color(\textwidth)=(white)}
 
 %% Definition for custom frame
 \begin{pgfpicture}{0mm}{0mm}{\paperwidth}{\paperheight}
-	\pgfputat{\pgfxy(5.5,5)}{\pgfbox[center,center]{\huge #1}}
-	\pgfputat{\pgfxy(5.5,4.6)}{\pgfuseshading{doubleShade}}
-	\pgfputat{\pgfxy(5.5,4.4)}{\pgfbox[center,center]{\color{CustomBlue}\scriptsize{#2}}}
+	\pgfputat{\pgfxy(7.5,5)}{\pgfbox[center,center]{\huge #1}}
+	\pgfputat{\pgfxy(7.5,4.6)}{\pgfuseshading{doubleShade}}
+	\pgfputat{\pgfxy(7.5,4.4)}{\pgfbox[center,center]{\color{CustomBlue}\scriptsize{#2}}}
 	\pgfputat{\pgfxy(11,12.065)}{\pgfbox[center,center]{\includegraphics[height=1cm, width=1cm]{logo.pdf}}}
 	\pgfsetlinewidth{0.1mm}
 	\color{BottomLine}
@@ -354,3 +354,4 @@ color(.5\textwidth)=(TopLine); color(\textwidth)=(white)}
 
 \mode
 <all>  	 
+ 	 
