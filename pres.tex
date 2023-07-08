@@ -3,9 +3,19 @@
 \usepackage{hyperref}
 \usepackage[ruled, linesnumbered]{algorithm2e}
 \usepackage{nicefrac}
+\usepackage{xcolor}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{animate}
+\usepackage{multimedia}
+\usepackage{tikz}
+\usepackage{background}
+\usetikzlibrary{fadings}
+\usepackage{natbib}
+\bibliographystyle{abbrvnat}
 
 \setbeamertemplate{bibliography item}[text]
-\usepackage{biblatex}
+% \usepackage{biblatex}
 
 \usepackage{sansmathaccent}
 \pdfmapfile{+sansmathaccent.map}
@@ -13,7 +23,7 @@
 \renewcommand{\bibfont}{\tiny}
 
 %% Add your bibliography, i.e., bibtex file here
-\addbibresource{pres.bib}
+% \addbibresource{pres.bib}
 
 %% Using the iist theme
 \usetheme{iist}
@@ -58,28 +68,38 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 \end{frame}
 
 %% Creating slide with table of contents
+%EDIT!!! Background faded IIST logo added (edited by ramzan basheer)
+\setbeamertemplate{background}{
+  \begin{tikzpicture}
+    \node[inner sep=0pt,outer sep=0pt,opacity=0.5] at (current page.center) {\includegraphics[width=\paperwidth,height=\paperheight, keepaspectratio]{logo.pdf}};
+    \path [draw=none, fill=white, opacity=0.3] (0,0) rectangle (\paperwidth,\paperheight);
+  \end{tikzpicture}
+}
 \begin{frame}
 	\frametitle{Outline}
 	\tableofcontents
 \end{frame}
+
+\setbeamertemplate{background}{}
 
 %% Here onwards you can add your contents
 \section{Listing}
 \subsection{Itemization}
 \begin{frame}
 	\frametitle{Itemize}
-		\begin{itemize}
- 			\item Item 1
- 			\item Item 2
- 			\begin{itemize}
-				\item Subitem 2.1
-				\begin{itemize}
-					\item Subsubitem 2.1.1
-					\item Subsubitem 2.1.2
+        %gEDIT!!! greying of visited items(edited by ramzan basheer)
+		\begin{itemize}[<+->]\color{gray}
+ 			\item \color<.>{black} Item 1
+ 			\item \color<.>{black} Item 2
+ 			\begin{itemize}[<+->]\color{gray}
+				\item \color<.>{black} Subitem 2.1
+				\begin{itemize}[<+->]\color{gray}
+					\item \color<.>{black} Subsubitem 2.1.1
+					\item \color<.>{black} Subsubitem 2.1.2
 				\end{itemize}
-				\item Subitem 2.2
+				\item \color<.>{black} Subitem 2.2
  			\end{itemize}
- 			\item Item 3
+ 			\item \color<.>{black} Item 3
  		\end{itemize} 		
 \end{frame}
 
@@ -87,10 +107,11 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 \subsection{Enumeration}
 \begin{frame}
 	\frametitle{Enumerate}
-	\begin{enumerate}					
-		\item Item 1
-		\item Item 2
-		\item Item 3
+	\begin{enumerate}	
+        %EDIT!!! Animation of items. Play around with the numbers(edited by ramzan basheer)
+		\item <1-> Item 1
+		\item <2-3>Item 2
+		\item <3> Item 3
 	\end{enumerate}	
 \end{frame}
 
@@ -99,8 +120,9 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 \begin{frame}
 	\frametitle{Description}
 		\begin{description}
-			\item [One] Item 1
-			\item [Two] Item 2
+            %EDIT!!! animation added (edited by ramzan basheer)
+			\item <1> [One] Item 1
+			\item <2> [Two] Item 2
 		\end{description}
 \end{frame}	
 
@@ -112,17 +134,39 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 			This is a sample block
 		\end{block}
 \end{frame}
-\begin{frame}
-		\frametitle{Example block}
-		\begin{exampleblock}{Example}
-			This is a sample example block
+% \begin{frame}
+% 		\frametitle{Example block}
+\begin{frame}{Example block} %EDIT!!! \frametitle is removed now (edited by ramzan basheer)
+%EDIT!!! minipage added (edited by ramzan basheer)
+    \begin{minipage}{0.45\textwidth}
+		\begin{exampleblock}{Example 1}
+			This is a sample example block 1
 		\end{exampleblock}
+    \end{minipage}%
+    \hfill
+    \begin{minipage}{0.45\textwidth}
+		\begin{exampleblock}{Example 2}
+			This is a sample example block 2
+		\end{exampleblock}
+    \end{minipage}
 \end{frame}
-\begin{frame}
-		\frametitle{Alert block}
-		\begin{alertblock}{Alert}
-			This is a sample alert block
-		\end{alertblock}
+%EDIT!!! minipages with animation (edited by ramzan basheer)
+\begin{frame}{Alert block}
+    \only <1->{
+        \begin{minipage}{0.45\textwidth}
+            \begin{alertblock}{Alert 1}
+			         This is a sample alert block 1
+		      \end{alertblock}
+        \end{minipage}%
+    }
+    \hfill
+    \only <2> {
+        \begin{minipage}{0.45\textwidth}
+            \begin{alertblock}{Alert 2}
+			         This is a sample alert block 2
+		      \end{alertblock}
+        \end{minipage}
+    }
 \end{frame}	
 
 \section{Figures \& Columns}
@@ -133,6 +177,7 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 		\centering
 		\includegraphics[scale=0.1]{figures/latexlogo.png}
 		\caption{\LaTeX-logo}
+        \citep{stallman1981emacs} %EDIT!!! Abbreviated style citation added (by ramzan basheer)
 	\end{figure}
 \end{frame}
 
@@ -149,7 +194,7 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 		\end{column}
 		\begin{column}{0.5\paperwidth}
 		 \begin{itemize}
-			\item Item 1
+			\item \hyperlink{label1}{Item 1} %EDIT!!! hyperlink added (by ramzan basheer)
 			\item Item 2
 			\item Item 3
 		 \end{itemize}
@@ -159,8 +204,7 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 
 \section{Algorithms}
 \subsection{Sample algorithm}
-\begin{frame}
-	\frametitle{Algorithm}
+\begin{frame}[label =label1]{Algorithm} %EDIT!!! label added for hyperlinking (by ramzan basheer)
 	\begin{algorithm}[H]
 		%\SetAlgoVlined
 		\caption{Sum of $N$ numbers}
@@ -186,6 +230,12 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 	\footnotetext{\fullcite{stallman1985gnu}}
 	EMACS is a real-time display editor which can be extended by the 
 	user while it is running\footfullcite{stallman1981emacs}.
+\end{frame}
+
+%EDIT!!! References with frame breaks added (by ramzan basheer)
+\subsection{References}
+\begin{frame}[allowframebreaks]{References}
+	\bibliography{pres}
 \end{frame}
 
 \customframe{Questions?}{\emailid}
