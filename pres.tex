@@ -1,10 +1,9 @@
 \documentclass[aspectratio=169]{beamer}
 
-\bibliographystyle{abbrvnat}
-
-\setbeamertemplate{bibliography item}[text]
+%\setbeamertemplate{bibliography item}[text]
 % \usepackage{biblatex}
 \usepackage{natbib}
+\bibliographystyle{dinat}
 
 \usepackage{sansmathaccent}
 \pdfmapfile{+sansmathaccent.map}
@@ -45,8 +44,8 @@ Thiruvananthapuram, Kerala, India 695547 \\}
             \secname
         \end{center}
     \end{frame}
-
 }
+
 
 \begin{document}
 
@@ -206,20 +205,41 @@ Thiruvananthapuram, Kerala, India 695547 \\}
 	\end{algorithm}
 \end{frame}
 
+\section{Equations}
+\subsection{Sample Equations}
+\begin{frame}[label=eqn]{Equations}
+	\begin{equation}
+		a=1+\theta
+	\end{equation}
+\end{frame}
+
 \section{Bibliography}
 \subsection{Footnote}
+%\begin{frame}
+%	\frametitle{Citation} 
+%	\begin{block}{}
+%	``GNU, which stands for Gnu's Not Unix, is 
+%	the name for the complete Unix-compatible software system which 
+%	I am writing so that I can give it away free to everyone who can 
+%	use it\footnotemark."
+%	\end{block}
+%	\footnotetext{\fullcite{stallman1985gnu}}
+%	EMACS is a real-time display editor which can be extended by the 
+%	user while it is running\footfullcite{stallman1981emacs}.
+%\end{frame}
+
 \begin{frame}
-	\frametitle{Citation} 
-	\begin{block}{}
-	``GNU, which stands for Gnu's Not Unix, is 
-	the name for the complete Unix-compatible software system which 
-	I am writing so that I can give it away free to everyone who can 
-	use it\footnotemark."
-	\end{block}
-	\footnotetext{\fullcite{stallman1985gnu}}
-	EMACS is a real-time display editor which can be extended by the 
-	user while it is running\footfullcite{stallman1981emacs}.
+    \frametitle{Citation}
+    \begin{block}{}
+        ``GNU, which stands for Gnu's Not Unix, is 
+        the name for the complete Unix-compatible software system which 
+        I am writing so that I can give it away free to everyone who can 
+        use it\footnote{\citep{stallman1985gnu}.}"
+    \end{block}
+    EMACS is a real-time display editor which can be extended by the 
+    user while it is running\footnote{\citep{stallman1981emacs}}.
 \end{frame}
+
 
 %EDIT!!! References with frame breaks added (by ramzan basheer)
 \subsection{References}
